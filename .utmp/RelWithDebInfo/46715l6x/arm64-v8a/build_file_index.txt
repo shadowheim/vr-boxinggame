@@ -1,0 +1,2 @@
+/Users/kaiyi/Desktop/VR Boxing Game/VR Boxing Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/CMakeLists.txt
+/Users/kaiyi/Desktop/VR Boxing Game/VR Boxing Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/CMakeLists.txt

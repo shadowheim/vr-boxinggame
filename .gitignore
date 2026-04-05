@@ -24,6 +24,14 @@
 *.mdb
 *.opendb
 *.VC.db
+*.apk
+*.aab
+*.sln
+*.slnx
+*_BurstDebugInformation_DoNotShip/
+*_BackUpThisFolder_butDontShipItWithYourGame/
+Build/
+Builds/
 
 # OS
 .DS_Store

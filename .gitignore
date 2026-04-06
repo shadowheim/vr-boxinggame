@@ -37,3 +37,5 @@ Builds/
 .DS_Store
 Thumbs.db
 *.unitypackage
+
+*.unitypackage

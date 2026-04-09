@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private MultiplayerUI2 m_multiplayerUI2;
     [SerializeField]
     private MultiplayerUI m_multiplayerUI;
+
     private void Start()
     {
         if (m_multiplayerUI2 != null)
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("MultiplayerUI2 is not assigned", this);
         }
+
         if (m_multiplayerUI != null)
         {
             m_multiplayerUI.OnStartHost += StartHost;
@@ -30,7 +32,8 @@ public class GameManager : MonoBehaviour
             Debug.LogError("MultiplayerUI is not assigned", this);
         }
     }
-    public void OnDestroy()
+
+    private void OnDestroy()
     {
         if (m_multiplayerUI2 != null)
         {
@@ -46,16 +49,20 @@ public class GameManager : MonoBehaviour
             m_multiplayerUI.OnDisconnectClient -= DisconnectClient;
         }
     }
+
     private void StartHost2()
     {
+        Debug.Log("StartHost2 clicked");
         m_multiplayerUI2.DisableButtons();
         NetworkManager.Singleton.StartHost();
     }
+
     private void StartClient2()
     {
         m_multiplayerUI2.DisableButtons();
         NetworkManager.Singleton.StartClient();
     }
+
     private void DisconnectClient2()
     {
         m_multiplayerUI2.EnableButtons();
@@ -67,11 +74,13 @@ public class GameManager : MonoBehaviour
         m_multiplayerUI.DisableButtons();
         NetworkManager.Singleton.StartHost();
     }
+
     private void StartClient()
     {
         m_multiplayerUI.DisableButtons();
         NetworkManager.Singleton.StartClient();
     }
+
     private void DisconnectClient()
     {
         m_multiplayerUI.EnableButtons();

@@ -1,10 +1,19 @@
 # ninja log v5
-0	1262	1775407270822603533	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	b41d647f0576ce9b
+0	1762	1775407271329188702	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	a43ddadefdd51f61
+1	1680	1775407271246284013	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	949dc26a4f76d83d
+1	1565	1775407271130052217	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	974eb02571d7cf08
+0	1446	1775407271011833710	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	3a213cb2a903965d
+1	1426	1775407270990844740	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	5d036d29e2bb364f
 1	1325	1775407270880885949	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	3fc8e9bb8696cdb0
 1	1373	1775407270931727633	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	75ca5c957d8f2151
-1	1426	1775407270990844740	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	5d036d29e2bb364f
-0	1446	1775407271011833710	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	3a213cb2a903965d
-1	1565	1775407271130052217	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	974eb02571d7cf08
-1	1680	1775407271246284013	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	949dc26a4f76d83d
-0	1762	1775407271329188702	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	a43ddadefdd51f61
 1762	1890	1775407271457824883	/Users/kaiyi/Desktop/VR Boxing Game/VR Boxing Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/46715l6x/obj/arm64-v8a/libgame.so	a8fca128fc3c946d
+0	1262	1775407270822603533	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	b41d647f0576ce9b
+12	2053	1775841714962116993	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	3fc8e9bb8696cdb0
+12	2059	1775841714970568204	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	75ca5c957d8f2151
+13	2107	1775841715016588043	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	974eb02571d7cf08
+11	2142	1775841715055269412	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	b41d647f0576ce9b
+12	2187	1775841715101134538	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	5d036d29e2bb364f
+11	2193	1775841715105876930	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	3a213cb2a903965d
+12	2499	1775841715414002298	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	949dc26a4f76d83d
+11	2619	1775841715533398880	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	a43ddadefdd51f61
+2619	2924	1775841715839463770	/Users/kaiyi/Desktop/VR Boxing Game/VR Boxing Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/46715l6x/obj/arm64-v8a/libgame.so	a8fca128fc3c946d

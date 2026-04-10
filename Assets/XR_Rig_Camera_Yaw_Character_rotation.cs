@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class XR_Rig_Camera_Yaw_Character_rotation : MonoBehaviour
 {
-    [SerializeField] private Transform xrCamera;
+    [SerializeField] private Transform headTarget;
     [SerializeField] private bool smoothRotation = true;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private Vector3 modelForwardOffsetEuler;
 
     private void LateUpdate()
     {
-        if (xrCamera == null) return;
+        if (headTarget == null) return;
 
-        Vector3 forward = xrCamera.forward;
+        Vector3 forward = headTarget.forward;
         forward.y = 0f;
 
         if (forward.sqrMagnitude < 0.0001f) return;

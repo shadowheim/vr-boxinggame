@@ -1,24 +1,63 @@
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] private string m_gameSceneName = "VRBoxingScene";
+    [SerializeField] private string m_startSceneName = "StartScene";
+
     private MultiplayerUI2 m_multiplayerUI2;
-    [SerializeField]
     private MultiplayerUI m_multiplayerUI;
+
+    private static GameManager s_instance;
+
+    private void Awake()
+    {
+        if (s_instance != null && s_instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        s_instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
     private void Start()
     {
+        HookupSceneUI();
+        SyncUIState();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        HookupSceneUI();
+        SyncUIState();
+    }
+
+    private void HookupSceneUI()
+    {
+        UnhookSceneUI();
+
+        m_multiplayerUI2 = FindFirstObjectByType<MultiplayerUI2>();
+        m_multiplayerUI = FindFirstObjectByType<MultiplayerUI>();
+
         if (m_multiplayerUI2 != null)
         {
             m_multiplayerUI2.OnStartHost += StartHost2;
             m_multiplayerUI2.OnStartClient += StartClient2;
             m_multiplayerUI2.OnDisconnectClient += DisconnectClient2;
-        }
-        else
-        {
-            Debug.LogError("MultiplayerUI2 is not assigned", this);
         }
 
         if (m_multiplayerUI != null)
@@ -27,19 +66,16 @@ public class GameManager : MonoBehaviour
             m_multiplayerUI.OnStartClient += StartClient;
             m_multiplayerUI.OnDisconnectClient += DisconnectClient;
         }
-        else
-        {
-            Debug.LogError("MultiplayerUI is not assigned", this);
-        }
     }
 
-    private void OnDestroy()
+    private void UnhookSceneUI()
     {
         if (m_multiplayerUI2 != null)
         {
             m_multiplayerUI2.OnStartHost -= StartHost2;
             m_multiplayerUI2.OnStartClient -= StartClient2;
             m_multiplayerUI2.OnDisconnectClient -= DisconnectClient2;
+            m_multiplayerUI2 = null;
         }
 
         if (m_multiplayerUI != null)
@@ -47,43 +83,129 @@ public class GameManager : MonoBehaviour
             m_multiplayerUI.OnStartHost -= StartHost;
             m_multiplayerUI.OnStartClient -= StartClient;
             m_multiplayerUI.OnDisconnectClient -= DisconnectClient;
+            m_multiplayerUI = null;
+        }
+    }
+
+    private void SyncUIState()
+    {
+        bool connected = NetworkManager.Singleton != null &&
+                         (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsClient);
+
+        if (connected)
+        {
+            m_multiplayerUI2?.DisableButtons();
+            m_multiplayerUI?.DisableButtons();
+        }
+        else
+        {
+            m_multiplayerUI2?.EnableButtons();
+            m_multiplayerUI?.EnableButtons();
         }
     }
 
     private void StartHost2()
     {
-        Debug.Log("StartHost2 clicked");
-        m_multiplayerUI2.DisableButtons();
-        NetworkManager.Singleton.StartHost();
+        if (NetworkManager.Singleton == null)
+            return;
+
+        if (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsClient)
+        {
+            SyncUIState();
+            return;
+        }
+
+        bool started = NetworkManager.Singleton.StartHost();
+
+        if (started)
+        {
+            SyncUIState();
+            NetworkManager.Singleton.SceneManager.LoadScene(m_gameSceneName, LoadSceneMode.Single);
+        }
     }
 
     private void StartClient2()
     {
-        m_multiplayerUI2.DisableButtons();
-        NetworkManager.Singleton.StartClient();
+        if (NetworkManager.Singleton == null)
+            return;
+
+        if (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsClient)
+        {
+            SyncUIState();
+            return;
+        }
+
+        bool started = NetworkManager.Singleton.StartClient();
+
+        if (started)
+        {
+            SyncUIState();
+        }
     }
 
     private void DisconnectClient2()
     {
-        m_multiplayerUI2.EnableButtons();
-        NetworkManager.Singleton.Shutdown();
+        DisconnectInternal();
     }
 
     private void StartHost()
     {
-        m_multiplayerUI.DisableButtons();
-        NetworkManager.Singleton.StartHost();
+        if (NetworkManager.Singleton == null)
+            return;
+
+        if (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsClient)
+        {
+            SyncUIState();
+            return;
+        }
+
+        bool started = NetworkManager.Singleton.StartHost();
+
+        if (started)
+        {
+            SyncUIState();
+            NetworkManager.Singleton.SceneManager.LoadScene(m_gameSceneName, LoadSceneMode.Single);
+        }
     }
 
     private void StartClient()
     {
-        m_multiplayerUI.DisableButtons();
-        NetworkManager.Singleton.StartClient();
+        if (NetworkManager.Singleton == null)
+            return;
+
+        if (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsClient)
+        {
+            SyncUIState();
+            return;
+        }
+
+        bool started = NetworkManager.Singleton.StartClient();
+
+        if (started)
+        {
+            SyncUIState();
+        }
     }
 
     private void DisconnectClient()
     {
-        m_multiplayerUI.EnableButtons();
-        NetworkManager.Singleton.Shutdown();
+        DisconnectInternal();
+    }
+
+    private void DisconnectInternal()
+    {
+        if (NetworkManager.Singleton != null &&
+            (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsClient))
+        {
+            NetworkManager.Singleton.Shutdown();
+        }
+
+        SyncUIState();
+
+        Scene activeScene = SceneManager.GetActiveScene();
+        if (activeScene.name != m_startSceneName)
+        {
+            SceneManager.LoadScene(m_startSceneName, LoadSceneMode.Single);
+        }
     }
 }

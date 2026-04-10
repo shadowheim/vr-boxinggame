@@ -14,6 +14,9 @@ public class BillboardUI : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (m_cameraTransform == null)
+            return;
+
         Vector3 direction = transform.position - m_cameraTransform.position;
         direction.y = 0; // Keep the billboard upright
         if(direction.sqrMagnitude > 0.001f)

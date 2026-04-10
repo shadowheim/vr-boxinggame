@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7659451870962955749}
   - component: {fileID: 5546999019225268750}
   m_Layer: 0
-  m_Name: XRPlayerPrefab
+  m_Name: XRPlayerPrefab1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2121628104
+  GlobalObjectIdHash: 712872148
   InScenePlacedSourceGlobalObjectIdHash: 2234985229
   DeferredDespawnTick: 0
   Ownership: 1
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794356090431738139}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c99c0f9db60194b10ad9aa10d5f80529, type: 3}
   m_Name: 
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794356090431738139}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b08982b6cbb8f4df7b9cb9cb73ba61f7, type: 3}
   m_Name: 
@@ -171,6 +171,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin Hands (XR Rig)
       objectReference: {fileID: 0}
+    - target: {fileID: 2129812423036554834, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660640761847466900, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3187756489939477157, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -189,11 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5107104719311767242, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 89.4
       objectReference: {fileID: 0}
     - target: {fileID: 5107104719311767242, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 5107104719655333142, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_AnchorMax.y
@@ -217,11 +225,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5107104719872822915, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5107104719872822915, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 5107104720199607647, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_AnchorMax.y
@@ -265,19 +273,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5107104720860062274, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5107104720860062274, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 5107104720915169291, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5107104720915169291, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 5107104721084006871, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_AnchorMax.y
@@ -325,11 +333,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5199574762953679092, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5199574762953679092, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 5199574763148883743, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_AnchorMax.y
@@ -353,19 +361,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5199574763406120074, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5199574763406120074, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 5199574763664223613, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 89.4
       objectReference: {fileID: 0}
     - target: {fileID: 5199574763664223613, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 5199574763869815649, guid: ca32c6c2ef26e4abcad1ada38f9e6110, type: 3}
       propertyPath: m_AnchorMax.y
@@ -514,5 +522,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96a3e16353db4ea4bbc4d799ba7dbf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  xrRigRoot: {fileID: 5053276161830471397}
+  movementSource: {fileID: 0}
   animator: {fileID: 7950247095894725710}

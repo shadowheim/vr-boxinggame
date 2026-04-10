@@ -2,30 +2,52 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-/// <summary>
-/// Helper script that exposes UI Document button clicks as C# events that can be listened to 
-/// from the GameManager script to trigger the start host / client and disconnect actions.
-/// </summary>
 public class MultiplayerUI : MonoBehaviour
 {
-    [SerializeField]
-    private UIDocument m_uiDocument;
-    [SerializeField]
-    private Button m_hostButton, m_clientButton, m_clientDisconnect;
+    [SerializeField] private UIDocument m_uiDocument;
 
-    public event Action OnStartHost, OnStartClient, OnDisconnectClient;
+    private Button m_hostButton;
+    private Button m_clientButton;
+    private Button m_clientDisconnect;
+
+    public event Action OnStartHost;
+    public event Action OnStartClient;
+    public event Action OnDisconnectClient;
+
     private void Awake()
     {
         m_hostButton = m_uiDocument.rootVisualElement.Q<Button>("ButtonHost");
         m_clientButton = m_uiDocument.rootVisualElement.Q<Button>("ButtonClient");
         m_clientDisconnect = m_uiDocument.rootVisualElement.Q<Button>("ButtonDisconnect");
     }
-    private void Start()
+
+    private void OnEnable()
     {
-        m_hostButton.clicked += () => OnStartHost?.Invoke();
-        m_clientButton.clicked += () => OnStartClient?.Invoke();
-        m_clientDisconnect.clicked += () => OnDisconnectClient?.Invoke();
-        EnableButtons();
+        m_hostButton.clicked += HandleHostClicked;
+        m_clientButton.clicked += HandleClientClicked;
+        m_clientDisconnect.clicked += HandleDisconnectClicked;
+    }
+
+    private void OnDisable()
+    {
+        m_hostButton.clicked -= HandleHostClicked;
+        m_clientButton.clicked -= HandleClientClicked;
+        m_clientDisconnect.clicked -= HandleDisconnectClicked;
+    }
+
+    private void HandleHostClicked()
+    {
+        OnStartHost?.Invoke();
+    }
+
+    private void HandleClientClicked()
+    {
+        OnStartClient?.Invoke();
+    }
+
+    private void HandleDisconnectClicked()
+    {
+        OnDisconnectClient?.Invoke();
     }
 
     public void DisableButtons()

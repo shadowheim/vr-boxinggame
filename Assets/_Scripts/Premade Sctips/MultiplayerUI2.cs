@@ -12,13 +12,33 @@ public class MultiplayerUI2 : MonoBehaviour
     public event Action OnStartClient;
     public event Action OnDisconnectClient;
 
-    private void Start()
+    private void OnEnable()
     {
-        XR_hostButton.onClick.AddListener(() => OnStartHost?.Invoke());
-        XR_clientButton.onClick.AddListener(() => OnStartClient?.Invoke());
-        XR_clientDisconnect.onClick.AddListener(() => OnDisconnectClient?.Invoke());
+        XR_hostButton.onClick.AddListener(HandleHostClicked);
+        XR_clientButton.onClick.AddListener(HandleClientClicked);
+        XR_clientDisconnect.onClick.AddListener(HandleDisconnectClicked);
+    }
 
-        EnableButtons();
+    private void OnDisable()
+    {
+        XR_hostButton.onClick.RemoveListener(HandleHostClicked);
+        XR_clientButton.onClick.RemoveListener(HandleClientClicked);
+        XR_clientDisconnect.onClick.RemoveListener(HandleDisconnectClicked);
+    }
+
+    private void HandleHostClicked()
+    {
+        OnStartHost?.Invoke();
+    }
+
+    private void HandleClientClicked()
+    {
+        OnStartClient?.Invoke();
+    }
+
+    private void HandleDisconnectClicked()
+    {
+        OnDisconnectClient?.Invoke();
     }
 
     public void DisableButtons()

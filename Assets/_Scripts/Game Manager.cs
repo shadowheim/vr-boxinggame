@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     private MultiplayerUI2 m_multiplayerUI2;
     private MultiplayerUI m_multiplayerUI;
+    private LanConnectionConfig m_lanConfig;
 
     private static GameManager s_instance;
 
@@ -22,6 +23,11 @@ public class GameManager : MonoBehaviour
 
         s_instance = this;
         DontDestroyOnLoad(gameObject);
+
+        m_lanConfig = FindAnyObjectByType<LanConnectionConfig>();
+
+        if (m_lanConfig == null)
+            Debug.LogError("LanConnectionConfig was not found in the scene.");
     }
 
     private void OnEnable()
@@ -36,6 +42,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        m_lanConfig = GetComponent<LanConnectionConfig>();
+        if (m_lanConfig == null)
+            Debug.Log("LanConnectionConfig is not attached to GameManager");
+
         HookupSceneUI();
         SyncUIState();
     }
@@ -115,6 +125,8 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        m_lanConfig?.ConfigureForHost();
+
         bool started = NetworkManager.Singleton.StartHost();
 
         if (started)
@@ -124,24 +136,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void StartClient2()
+private void StartClient2()
+{
+    if (NetworkManager.Singleton == null)
+        return;
+
+    if (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsClient)
     {
-        if (NetworkManager.Singleton == null)
-            return;
-
-        if (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsClient)
-        {
-            SyncUIState();
-            return;
-        }
-
-        bool started = NetworkManager.Singleton.StartClient();
-
-        if (started)
-        {
-            SyncUIState();
-        }
+        SyncUIState();
+        return;
     }
+
+    m_lanConfig?.ConfigureForClient();
+
+    bool started = NetworkManager.Singleton.StartClient();
+
+    if (started)
+    {
+        SyncUIState();
+    }
+}
 
     private void DisconnectClient2()
     {
@@ -159,6 +173,8 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        m_lanConfig?.ConfigureForHost();
+
         bool started = NetworkManager.Singleton.StartHost();
 
         if (started)
@@ -169,23 +185,25 @@ public class GameManager : MonoBehaviour
     }
 
     private void StartClient()
+{
+    if (NetworkManager.Singleton == null)
+        return;
+
+    if (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsClient)
     {
-        if (NetworkManager.Singleton == null)
-            return;
-
-        if (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsClient)
-        {
-            SyncUIState();
-            return;
-        }
-
-        bool started = NetworkManager.Singleton.StartClient();
-
-        if (started)
-        {
-            SyncUIState();
-        }
+        SyncUIState();
+        return;
     }
+
+    m_lanConfig?.ConfigureForClient();
+
+    bool started = NetworkManager.Singleton.StartClient();
+
+    if (started)
+    {
+        SyncUIState();
+    }
+}
 
     private void DisconnectClient()
     {

@@ -404,6 +404,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2218496723442559054, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       insertIndex: -1
       addedObject: {fileID: 412641582}
+    - targetCorrespondingSourceObject: {fileID: 2218496723442559054, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 412641588}
   m_SourcePrefab: {fileID: 100100000, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
 --- !u!1 &412641559 stripped
 GameObject:
@@ -443,6 +446,7 @@ MonoBehaviour:
   leftHand: {fileID: 1427640989}
   rightHand: {fileID: 1284554225}
   characterController: {fileID: 412641561}
+  knockbackMotor: {fileID: 412641588}
 --- !u!114 &412641582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,6 +467,19 @@ MonoBehaviour:
   - {fileID: 1214753575}
   - {fileID: 240005609}
   resetDelay: 0.05
+--- !u!114 &412641588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412641559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be9c00b1da7f54598b74657a314e9a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalRigKnockbackMotor
+  damping: 10
 --- !u!1001 &426972546
 PrefabInstance:
   m_ObjectHideFlags: 0

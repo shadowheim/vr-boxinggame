@@ -8,11 +8,14 @@ public class PersistentXRRigReferences : MonoBehaviour
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
     [SerializeField] private CharacterController characterController;
+    [SerializeField] private LocalRigKnockbackMotor knockbackMotor;
 
     public Transform Head => head;
     public Transform LeftHand => leftHand;
     public Transform RightHand => rightHand;
     public CharacterController CharacterController => characterController;
+    public Transform RigRoot => transform;
+    public LocalRigKnockbackMotor KnockbackMotor => knockbackMotor;
 
     private void Awake()
     {

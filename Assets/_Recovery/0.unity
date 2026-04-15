@@ -422,11 +422,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e924e1bad98db4c5e9f6f0777f7f8215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!143 &412641561 stripped
-CharacterController:
-  m_CorrespondingSourceObject: {fileID: 6873022368256633593, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
-  m_PrefabInstance: {fileID: 412641558}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &412641567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,7 +437,6 @@ MonoBehaviour:
   head: {fileID: 1260132873}
   leftHand: {fileID: 1427640989}
   rightHand: {fileID: 1284554225}
-  characterController: {fileID: 412641561}
 --- !u!114 &412641582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,7 +695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LanConnectionConfig
   port: 7777
-  hostAddress: 10.26.8.54
+  hostAddress: 10.26.8.62
 --- !u!114 &1374301613
 MonoBehaviour:
   m_ObjectHideFlags: 0

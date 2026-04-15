@@ -7,10 +7,12 @@ public class PersistentXRRigReferences : MonoBehaviour
     [SerializeField] private Transform head;
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
+    [SerializeField] private CharacterController characterController;
 
     public Transform Head => head;
     public Transform LeftHand => leftHand;
     public Transform RightHand => rightHand;
+    public CharacterController CharacterController => characterController;
 
     private void Awake()
     {
